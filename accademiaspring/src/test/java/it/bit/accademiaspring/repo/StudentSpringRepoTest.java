@@ -30,9 +30,9 @@ import it.bit.accademiaspring.service.StudentService;
 @SpringBootTest
 class StudentSpringRepoTest {
 
-private Student s1 = new Student(-1, "gabr+i*" , "Paol+i*no", "112111+111", "caa+iiao"
+private Student s1 = new Student("gabr+i*" , "Paol+i*no", "112111+111", "caa+iiao"
 			, "11clqzd+saa@gmail.com" , "3211+1312", null, null, null, new Regione(1 , "Lombardia"), null );
-private Student s2 = new Student(-2, "p+i*no" , "coppol+ino", "111+11111", "cai+iao"
+private Student s2 = new Student("p+i*no" , "coppol+ino", "111+11111", "cai+iao"
 			, "a" , "1232+1312", null, null, null, new Regione(1 , "Lombardia"), null );
 //private Aula a1 = new Aula();
 private Course c1 = new Course(-1, "chimica", 100, 20, true, null, null);
@@ -56,9 +56,13 @@ StudentService service;
 
 	@BeforeEach
 	void setUp() throws Exception {
+		s1.setId(-1);
+		s2.setId(-2);
+
 		manager.persist(s1);
 		manager.persist(s2);
 		manager.persist(c1);
+
 	}
 
 	@AfterEach

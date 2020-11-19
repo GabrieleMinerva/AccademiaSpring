@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Student {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id; 
 	
@@ -69,10 +70,8 @@ public class Student {
 	
 	public Student() {}
 	
-	public Student(int id, String nome, String cognome, String dataDiNascita, String cF, String email, String telefono,
+	public Student(String nome, String cognome, String dataDiNascita, String cF, String email, String telefono,
 			String citta, String via, String cap, Regione regione, String titoloStudio) {
-		super();
-		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;

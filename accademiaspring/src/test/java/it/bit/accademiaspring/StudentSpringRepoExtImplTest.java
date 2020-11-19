@@ -25,9 +25,9 @@ import it.bit.accademiaspring.repo.StudentSpringRepoExtImpl;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class StudentSpringRepoExtImplTest {
-	private Student s1 = new Student(-1, "gabri" , "Paolino", "11111111", "caiiao"
+	private Student s1 = new Student("gabri" , "Paolino", "11111111", "caiiao"
 			, "11clqdsaa@gmail.com" , "321312", null, null, null, new Regione(1 , "Lombardia"), null );
-	private Student s2 = new Student(-1, "pino" , null, "11111111", "caiiao"
+	private Student s2 = new Student("pino" , null, "11111111", "caiiao"
 			, "" , "12321312", null, null, null, new Regione(1 , "Lombardia"), null );
 	@Autowired
 	StudentSpringRepo spr;
@@ -45,6 +45,9 @@ class StudentSpringRepoExtImplTest {
 	@Transactional
 	@BeforeEach
 	void setUp() throws Exception {
+		s1.setId(-1);
+		s2.setId(-2);
+
 		manager.persist(s1);
 
 

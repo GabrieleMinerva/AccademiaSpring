@@ -112,8 +112,12 @@ import it.bit.accademiaspring.model.Student;
 		}
 
 		public Student toStudent() {
-			return new Student(id, fullName.split("_")[0], fullName.split("_")[1]
+			Student s = new Student(fullName.split("_")[0], fullName.split("_")[1]
 					, dataDiNascita, CF, email, telefono, null, null, null, new Regione(idRegione,nomeRegione), null);
-		}	
+			if(this.id!=0){
+				s.setId(this.id);
+			}
+			return s;
+		}
 		
 }
