@@ -112,7 +112,8 @@ import it.bit.accademiaspring.model.Student;
 		}
 
 		public Student toStudent() {
-			Student s = new Student(fullName.split("_")[0], fullName.split("_")[1]
+			String[] tokens = fullName.split(" ");
+			Student s = new Student(tokens[0], tokens[1]
 					, dataDiNascita, CF, email, telefono, null, null, null, new Regione(idRegione,nomeRegione), null);
 			if(this.id!=0){
 				s.setId(this.id);
