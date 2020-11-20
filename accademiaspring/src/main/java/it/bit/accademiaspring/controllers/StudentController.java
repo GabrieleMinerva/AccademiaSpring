@@ -65,13 +65,12 @@ private StudentService studentService;
 	}
 	
 	@DeleteMapping("/{studentId}")
-	public String deleteStudent(@PathVariable int studentId) {
+	public void deleteStudent(@PathVariable int studentId) {
 		
 		Student tempStudent = studentService.findById(studentId)
 				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found"));
 		
 		studentService.deleteById(studentId);
-		return "Deleted student id - " + studentId;
 	}
 	@PostMapping("/iscrizioni")
 	public void creaDataIscrizione(@RequestBody DataIscrizioniDTO isc ) {
