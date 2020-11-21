@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import it.bit.accademiaspring.dto.LezioneDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,6 +67,17 @@ public class CourseController {
 		courseService.creaLezioni(theCourseDTO, theCourse);
 		
 
+	}
+
+	@GetMapping("/lezioni/{courseId}")
+	public Iterable<LezioneDTO> getCourseLez(@PathVariable int courseId) {
+
+		Course theCourse = courseService.findById(courseId)
+				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found"));
+		Collection <LezioneDTO> listaLez = theCourse.getLezioni()
+				.stream().map(LezioneDTO::new).collect(Collectors.toList());
+
+		return listaLez;
 	}
 	
 	@PutMapping()

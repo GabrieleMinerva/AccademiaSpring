@@ -1,5 +1,6 @@
 package it.bit.accademiaspring.dto;
 
+import java.time.DayOfWeek;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,11 @@ public class CourseDTO {
 	private String dataDiInizio;
 	
 	private int idAulaPreferita;
-	
+
+	private List<DayOfWeek> dowList;
+
+
+
 	public CourseDTO(Course c) {
 		this.id = c.getId();
 		this.nomeCorso = c.getNomeCorso();
@@ -44,7 +49,7 @@ public class CourseDTO {
 	}
 
 	public CourseDTO(int id, String nomeCorso, int capienza, int iscrizioniMin, boolean finanziato, Azienda azienda,
-			List<IscrizioneDTO> iscrizioni, int numeroLezioni, Orario orarioPreferito, int idAulaPreferita, String dataDiInizio) {
+			List<IscrizioneDTO> iscrizioni, int numeroLezioni, Orario orarioPreferito, int idAulaPreferita, String dataDiInizio, List<DayOfWeek> dowList) {
 		super();
 		this.id = id;
 		this.nomeCorso = nomeCorso;
@@ -57,6 +62,15 @@ public class CourseDTO {
 		this.orarioPreferito = orarioPreferito;
 		this.idAulaPreferita = idAulaPreferita;
 		this.dataDiInizio = dataDiInizio;
+		this.dowList = dowList;
+	}
+
+	public List<DayOfWeek> getDowList() {
+		return dowList;
+	}
+
+	public void setDowList(List<DayOfWeek> dowList) {
+		this.dowList = dowList;
 	}
 
 	public int getId() {

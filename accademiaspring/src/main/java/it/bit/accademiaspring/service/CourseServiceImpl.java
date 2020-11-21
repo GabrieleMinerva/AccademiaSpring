@@ -2,10 +2,9 @@ package it.bit.accademiaspring.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -89,22 +88,17 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public void creaLezioni(CourseDTO courseDTO, Course course) {
 		String dt = courseDTO.getDataInizio(); // Start date.
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Calendar c = Calendar.getInstance();
-		try {
-			c.setTime(sdf.parse(dt));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		dt = sdf.format(c.getTime()); // dt is now the new date.
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(Locale.ITALY);
+		LocalDate date = LocalDate.parse(dt, formatter);
 		Aula a = aRepo.findById(courseDTO.getIdAulaPreferita()).get();
 		int i = 0;
 		while (i < courseDTO.getNumeroLezioni()) {
-			String dt2 = sdf.format(c.getTime());
-			if (creaLezione(course, a, courseDTO.getOrarioPreferito(), dt2)) {
-				i++;
+			if(courseDTO.getDowList().contains(date.getDayOfWeek())) {
+				if (creaLezione(course, a, courseDTO.getOrarioPreferito(), date.format(formatter))) {
+					i++;
+				}
 			}
-			c.add(Calendar.DATE, 1);
+			date = date.plusDays(1);
 		}
 	}
 }
