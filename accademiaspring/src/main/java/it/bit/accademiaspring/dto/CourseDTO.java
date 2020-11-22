@@ -158,8 +158,12 @@ public class CourseDTO {
 	}
 	
 	public Course toCourse() {
-		return new Course(id, nomeCorso, capienza, iscrizioniMin, finanziato, 
+		Course c = new Course(nomeCorso, capienza, iscrizioniMin, finanziato,
 				new Aula(idAulaPreferita, null, null, null, null), dataDiInizio);
+		if(this.id!=0){
+			c.setId(this.id);
+		}
+		return c;
 	}
 
 	public String getDataInizio() {

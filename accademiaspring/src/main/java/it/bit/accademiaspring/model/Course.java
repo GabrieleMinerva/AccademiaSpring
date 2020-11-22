@@ -18,6 +18,7 @@ import javax.persistence.Table;
 public class Course {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -46,17 +47,15 @@ public class Course {
 	private List<Iscrizione> iscrizioni;
 	
 	@OneToMany(mappedBy="corso",
-			   cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-						 CascadeType.DETACH, CascadeType.REFRESH})
+			   cascade= {CascadeType.ALL})
 	private List<Lezione> lezioni;
 	
 	@ManyToOne
 	@JoinColumn(name="id_aula_pref")
 	private Aula aulaPreferita;
 	
-	public Course(int id, String nomeCorso, int capienza
+	public Course(String nomeCorso, int capienza
 			, int iscrizioneMin, boolean finanziato, Aula aula,String dataDiInizio) {
-		this.id = id;
 		this.nomeCorso = nomeCorso;
 		this.capienza = capienza;
 		this.iscrizioniMin = iscrizioneMin;
@@ -64,7 +63,7 @@ public class Course {
 		this.aulaPreferita = aula;
 		this.dataDiInizio = dataDiInizio;
 	}
-	
+
 	public Course() {}
 
 	public int getId() {

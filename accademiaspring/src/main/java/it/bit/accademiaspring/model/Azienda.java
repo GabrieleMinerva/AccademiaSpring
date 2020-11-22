@@ -21,6 +21,20 @@ public class Azienda {
 	private String citta;
 	private String via;
 	private String cap;
+
+	public Azienda() {
+	}
+
+	public Azienda(int id, String nome, String descrizione, String contatto, String citta, String via, String cap) {
+		this.id = id;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.contatto = contatto;
+		this.citta = citta;
+		this.via = via;
+		this.cap = cap;
+	}
+
 	public int getId() {
 		return id;
 	}

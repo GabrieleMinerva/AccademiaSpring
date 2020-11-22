@@ -35,7 +35,7 @@ private Student s1 = new Student("gabr+i*" , "Paol+i*no", "112111+111", "caa+iia
 private Student s2 = new Student("p+i*no" , "coppol+ino", "111+11111", "cai+iao"
 			, "a" , "1232+1312", null, null, null, new Regione(1 , "Lombardia"), null );
 //private Aula a1 = new Aula();
-private Course c1 = new Course(-1, "chimica", 100, 20, true, null, null);
+private Course c1 = new Course("chimica", 100, 20, true, null, null);
 private DataIscrizioniDTO d1;
 private Iscrizione i1;
 @Autowired

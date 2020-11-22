@@ -88,13 +88,13 @@ public class CourseController {
 	}
 
 	@DeleteMapping("/{courseId}")
-	public String deleteCourse(@PathVariable int courseId) {
+	public void deleteCourse(@PathVariable int courseId) {
 		
 		Course tempCourse = courseService.findById(courseId)
 				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found"));
 		
 		courseService.deleteById(courseId);
-		return "Deleted course id - " + courseId;
+
 	}
 	@PatchMapping()
 	public void patch(@RequestBody CourseDTO theCourseDTO) {

@@ -75,7 +75,7 @@ public class Student {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
-		CF = cF;
+		this.CF = cF;
 		this.email = email;
 		this.telefono = telefono;
 		this.citta = citta;

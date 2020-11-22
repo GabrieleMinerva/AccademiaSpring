@@ -21,7 +21,7 @@ public class LezioneDTO {
                 break;
 
         }
-        this.orarioAula +=" in " + l.getAula().getNome();
+        this.orarioAula = "Orario: " + this.orarioAula +" nell'Aula " + "'" +l.getAula().getNome() + "'" ;
 
     }
 
