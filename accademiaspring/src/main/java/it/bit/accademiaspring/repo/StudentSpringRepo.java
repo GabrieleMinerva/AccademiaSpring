@@ -6,9 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 
 
 import it.bit.accademiaspring.model.Student;
+import org.springframework.stereotype.Component;
 
 
-
+@Component
 public interface StudentSpringRepo extends CrudRepository<Student, Integer> , StudentSpringRepoExt{
 	    //Simple Query Methods
 		

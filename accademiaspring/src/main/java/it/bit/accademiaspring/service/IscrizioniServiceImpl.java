@@ -34,7 +34,7 @@ public class IscrizioniServiceImpl implements IscrizioniService{
 	}
 	@Override
 	public void deleteById(int theId) {
-		// TODO Auto-generated method stub
+		repo.deleteById(theId);
 		
 	}
 	@Override

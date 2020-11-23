@@ -3,10 +3,7 @@ package it.bit.accademiaspring.controllers;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import it.bit.accademiaspring.dto.IscrizioneDTO;
 import it.bit.accademiaspring.model.Iscrizione;
@@ -16,6 +13,7 @@ import it.bit.accademiaspring.service.IscrizioniServiceImpl;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true", methods = {RequestMethod.OPTIONS, RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("/api/iscrizioni")
 public class IscrizioniController {
 
@@ -77,19 +75,12 @@ public class IscrizioniController {
 //		
 //		// add mapping for DELETE /employees/{employeeId} - delete employee
 //		
-//		@DeleteMapping("/students/{studentId}")
-//		public String deleteStudent(@PathVariable int studentId) {
-//			
-//			Student tempStudent = studentService.findById(studentId);
-//			
-//			// throw exception if null
-//			
-//			if (tempStudent == null) {
-//				throw new RuntimeException("Student id not found - " + studentId);
-//			}
-//			
-//			studentService.deleteById(studentId);
-//			
-//			return "Deleted student id - " + studentId;
-//		}
+		@DeleteMapping("/{iscrizioneId}")
+		public void deleteIscrizione(@PathVariable int iscrizioneId) {
+			Iscrizione tempIscrizione = iscrizioniService.findById(iscrizioneId);
+			if (tempIscrizione == null) {
+				throw new RuntimeException("Iscrizione id not found - " + iscrizioneId);
+			}
+			iscrizioniService.deleteById(iscrizioneId);
+		}
 }
